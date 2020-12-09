@@ -5,39 +5,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AoC2020_Tools;
 
 namespace AoC2020
 {
     class Program
-    {   
-        private static string filePath;
-        private static string fileContent;
-        [STAThread]
+    {
         static void Main(string[] args)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            string input = Tools.GetInputs();
+            string[] inputList = Tools.StringToArrayByLine(input);
+            List<int> intList = new List<int>();
+            foreach (string entry in inputList)
             {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                intList.Add(int.Parse(entry));
+            }
+            foreach (int item1 in intList)
+            {
+                foreach (int item2 in intList)
                 {
-                    //Get the path of specified file
-                    filePath = openFileDialog.FileName;
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream))
+                    int sum = item1 + item2;
+                    
+                    
+                    if (sum == 2020)
                     {
-                        fileContent = reader.ReadToEnd();
+                        int multi = item1 * item2;
+                        Tools.WriteLineColor($"{item1} + {item2} = {sum}\n" +
+                            $"{item1} * {item2} = {multi}", ConsoleColor.Green);
+                        Tools.AskCopyClipboard(multi.ToString());
+                        Tools.PressKeyToExit();
                     }
+                    else Console.WriteLine($"{item1} + {item2} = {sum}");
+
                 }
             }
-
-            MessageBox.Show(fileContent, "File Content at path: " + filePath, MessageBoxButtons.OK);
+            //end
+            Tools.PressKeyToExit();
         }
+
     }
 }

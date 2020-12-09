@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day1p1", "AoC2020\Day1p1.csproj", "{55B4DE50-3395-4056-98D2-5807C216AC01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AoC2020_Tools", "AoC2020_Tools\AoC2020_Tools.csproj", "{D75DA04E-9192-4A9A-847D-A533DA102524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{55B4DE50-3395-4056-98D2-5807C216AC01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B4DE50-3395-4056-98D2-5807C216AC01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B4DE50-3395-4056-98D2-5807C216AC01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D75DA04E-9192-4A9A-847D-A533DA102524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D75DA04E-9192-4A9A-847D-A533DA102524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D75DA04E-9192-4A9A-847D-A533DA102524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D75DA04E-9192-4A9A-847D-A533DA102524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
