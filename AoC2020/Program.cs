@@ -25,8 +25,6 @@ namespace AoC2020
                 foreach (int item2 in intList)
                 {
                     int sum = item1 + item2;
-                    
-                    
                     if (sum == 2020)
                     {
                         int multi = item1 * item2;
@@ -35,8 +33,7 @@ namespace AoC2020
                         Tools.AskCopyClipboard(multi.ToString());
                         Tools.PressKeyToExit();
                     }
-                    else Console.WriteLine($"{item1} + {item2} = {sum}");
-
+                    //else Console.WriteLine($"{item1} + {item2} = {sum}"); //slows down
                 }
             }
             //end

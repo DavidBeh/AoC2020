@@ -74,8 +74,12 @@ namespace AoC2020_Tools
         }
         public static void CopyClipBoard(string _stringToCopy)
         {
-            
-            Thread thread = new Thread(() => Clipboard.SetText(_stringToCopy, TextDataFormat.UnicodeText));
+
+            Thread thread = new Thread(() =>
+            {
+                Clipboard.Clear();
+                Clipboard.SetText(_stringToCopy, TextDataFormat.UnicodeText);
+            });
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
             thread.Join();
