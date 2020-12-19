@@ -28,27 +28,21 @@ namespace Day2p1
     }
     public class PasswordEntry
     {
-        int min;
-        int max;
+        int pos1;
+        int pos2;
         char policy;
         string password;
 
-        public PasswordEntry(int _min, int _max, char _policy, string _password)
+        public PasswordEntry(int _pos1, int _pos2, char _policy, string _password)
         {
-            min = _min;
-            max = _max;
+            pos1 = _pos1;
+            pos2 = _pos2;
             policy = _policy;
             password = _password;
         }
         public bool isValid()
         {
-
-            int count = password.Length - password.Replace(policy.ToString(), "").Length;
-            if (count < min || count > max)
-            {
-                return false;
-            }
-            else return true;
+            return password[pos1 - 1] == policy ^ password[pos2 - 1] == policy;
         }
 
         public PasswordEntry(string _input)
