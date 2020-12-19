@@ -35,7 +35,31 @@ namespace AoC2020_Tools
                     return null;
                 }
             }
+        }
 
+        public static string[] GetInputsByLine()
+        {
+            if (File.Exists("input.txt"))
+            {
+                Console.WriteLine("input.txt found");
+                return File.ReadAllLines("input.txt");
+            }
+            else
+            {
+                Console.WriteLine("input.txt not found in working directory. Pick the file.");
+                string filepath = OpenFilePicker();
+                if (filepath != null) //If the filepath is null, the pickerdialog has been aborted
+                {
+                    Console.WriteLine($"You picked {filepath}");
+                    return File.ReadAllLines(filepath);
+                }
+                else
+                {
+                    Console.WriteLine("You did not Pick the file.");
+                    PressKeyToExit();
+                    return null;
+                }
+            }
         }
 
         private static string OpenFilePicker()

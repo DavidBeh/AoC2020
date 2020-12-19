@@ -26,24 +26,29 @@ namespace Day3p1
                 }
             }
             Vector2 vec = new Vector2();
-            int treeCount = 0;
-            while (vec.y < forest.treeRows.Count())
-            {
-                if (forest.treeRows[vec.y].getRepeating(vec.x))
-                {
-                    treeCount++;
-                }
-                vec.Translate(3, 1);
-            }
+            int treeCount = forest.CountTreesWhithTransform(3, 1);
             Tools.WriteLineColor($"found {treeCount} tress", ConsoleColor.Green);
             Tools.AskCopyClipboard(treeCount.ToString());
+
+            //////  PART TWO
             Tools.WriteLineColor("Part Two", ConsoleColor.Cyan);
-
-
+            List<int> treeCounts = new List<int>();
+            treeCounts.Add(forest.CountTreesWhithTransform(1, 1));
+            treeCounts.Add(forest.CountTreesWhithTransform(3, 1));
+            treeCounts.Add(forest.CountTreesWhithTransform(5, 1));
+            treeCounts.Add(forest.CountTreesWhithTransform(7, 1));
+            treeCounts.Add(forest.CountTreesWhithTransform(1, 2));
+            Console.WriteLine("Trees in Slopes" + string.Join(", " , treeCounts));
+            long multiTreeCounts = 1;
+            foreach (long item in treeCounts)
+            {
+                multiTreeCounts *= item;
+            }
+            Tools.WriteLineColor($"multiplied together: {multiTreeCounts}", ConsoleColor.Green);
+            Tools.AskCopyClipboard(multiTreeCounts.ToString());
             Tools.PressKeyToExit();
         }
     }
-
     class Vector2
     {
         public int x;
@@ -63,6 +68,21 @@ namespace Day3p1
     class Forest
     {
         public List<TreeRow> treeRows = new List<TreeRow>();
+
+        public int CountTreesWhithTransform(int x, int y)
+        {
+            Vector2 vec = new Vector2();
+            int treeCount = 0;
+            while (vec.y < treeRows.Count())
+            {
+                if (treeRows[vec.y].getRepeating(vec.x))
+                {
+                    treeCount++;
+                }
+                vec.Translate(x, y);
+            }
+            return treeCount;
+        }
     }
     class TreeRow
     {
