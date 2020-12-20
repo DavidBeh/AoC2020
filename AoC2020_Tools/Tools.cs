@@ -61,7 +61,10 @@ namespace AoC2020_Tools
                 }
             }
         }
-
+        public static string GetInputsLF()
+        {
+            return string.Join("\n", GetInputsByLine());
+        }
         private static string OpenFilePicker()
         {
             string filepath = null;
@@ -94,7 +97,7 @@ namespace AoC2020_Tools
                 Console.WriteLine("es");
                 CopyClipBoard(_stringToCopy);
             }
-            else Console.WriteLine("no");
+            else Console.WriteLine("o");
         }
         public static void CopyClipBoard(string _stringToCopy)
         {
